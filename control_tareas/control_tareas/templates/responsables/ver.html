@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Tareas de responsable - Control de Tareas{% endblock %}
+{% block encabezado %}Tareas de {{ responsable.nombre }} {{ responsable.apellidos }}{% endblock %}
+{% block descripcion %}Listado de tareas asignadas a este responsable.{% endblock %}
+
+{% block content %}
+
+<div class="encabezado-listado">
+    <div>
+        <h2 class="titulo-pagina">Tareas asignadas</h2>
+        <p class="subtitulo-pagina">
+            Total de tareas: <strong>{{ total_tareas }}</strong>
+        </p>
+    </div>
+    <a href="{{ url_for('responsables.listar_responsables') }}" class="btn btn-secundario">
+        ← Volver al listado
+    </a>
+</div>
+
+<div class="info-responsable">
+    <div class="fila-formulario">
+        <div class="campo">
+            <label><strong>ID:</strong></label>
+            <span>{{ responsable.id_responsable }}</span>
+        </div>
+        <div class="campo">
+            <label><strong>Identificación:</strong></label>
+            <span>{{ responsable.identificacion }}</span>
+        </div>
+    </div>
+    <div class="fila-formulario">
+        <div class="campo campo-completo">
+            <label><strong>Nombre completo:</strong></label>
+            <span>{{ responsable.nombre }} {{ responsable.apellidos }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="tabla-contenedor">
+    {% if tareas %}
+        <table class="tabla-tareas">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Detalle</th>
+                    <th>Prioridad</th>
+                    <th>Estado</th>
+                    <th>Fecha límite</th>
+                    <th>Grupo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarea in tareas %}
+                <tr>
+                    <td>{{ tarea.id_tarea }}</td>
+                    <td class="detalle-tarea">{{ tarea.detalle[:50] }}{% if tarea.detalle|length > 50 %}...{% endif %}</td>
+                    <td><span class="prioridad prioridad-{{ tarea.prioridad|lower }}">{{ tarea.prioridad }}</span></td>
+                    <td><span class="estado estado-{{ tarea.estado|replace(' ', '-')|lower }}">{{ tarea.estado }}</span></td>
+                    <td>{{ tarea.fecha_limite if tarea.fecha_limite else 'Sin fecha' }}</td>
+                    <td>{{ tarea.grupo_nombre if tarea.grupo_nombre else 'Sin grupo' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="mensaje-vacio">
+            <p>Este responsable no tiene tareas asignadas.</p>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

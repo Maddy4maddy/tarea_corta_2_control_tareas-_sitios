@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Control de Tareas{% endblock %}</title>
-
     <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
-
     {% block css %}{% endblock %}
 </head>
 <body>
-
     <aside class="menu-lateral">
         <div class="logo">
             <div class="logo-icono">✓</div>
@@ -18,10 +15,12 @@
         </div>
 
         <nav class="menu">
+            <a href="{{ url_for('responsables.listar_responsables') }}">
+                Responsables
+            </a>
             <a href="{{ url_for('tareas.listar_tareas') }}">
                 Tareas
             </a>
-
             <a href="{{ url_for('grupos.listar_grupos') }}">
                 Grupos
             </a>
@@ -48,6 +47,5 @@
             {% block content %}{% endblock %}
         </main>
     </section>
-
 </body>
 </html>

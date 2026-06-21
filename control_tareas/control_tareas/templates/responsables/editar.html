@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Editar responsable - Control de Tareas{% endblock %}
+{% block encabezado %}Editar responsable{% endblock %}
+{% block descripcion %}Modifica los datos del responsable seleccionado.{% endblock %}
+
+{% block content %}
+
+<div class="form-card">
+    <div class="form-header">
+        <h2 class="titulo-pagina">Editar responsable</h2>
+        <p class="subtitulo-pagina">
+            Actualiza la información del responsable.
+        </p>
+    </div>
+
+    <form action="{{ url_for('responsables.editar_responsable', responsable_id=responsable.id_responsable) }}" method="POST" class="formulario-tarea">
+
+        <div class="campo campo-completo">
+            <label for="identificacion">Identificación *</label>
+            <input type="text" id="identificacion" name="identificacion" value="{{ responsable.identificacion }}" required placeholder="Ingresa la identificación">
+        </div>
+
+        <div class="fila-formulario">
+            <div class="campo">
+                <label for="nombre">Nombre *</label>
+                <input type="text" id="nombre" name="nombre" value="{{ responsable.nombre }}" required placeholder="Ingresa el nombre">
+            </div>
+
+            <div class="campo">
+                <label for="apellidos">Apellidos *</label>
+                <input type="text" id="apellidos" name="apellidos" value="{{ responsable.apellidos }}" required placeholder="Ingresa los apellidos">
+            </div>
+        </div>
+
+        <div class="nota-formulario">
+            Los campos marcados con <strong>*</strong> son obligatorios.
+        </div>
+
+        <div class="botones-formulario">
+            <button type="submit" class="btn btn-principal">Actualizar responsable</button>
+            <a href="{{ url_for('responsables.listar_responsables') }}" class="btn btn-secundario">Cancelar</a>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}
