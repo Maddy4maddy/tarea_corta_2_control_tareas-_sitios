@@ -1,0 +1,67 @@
+.encabezado-listado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.tabla-contenedor {
+    background: white;
+    border-radius: 18px;
+    box-shadow: var(--sombra);
+    overflow: hidden;
+}
+
+.tabla-grupos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-grupos th {
+    background: linear-gradient(
+        135deg,
+        var(--rosado),
+        var(--azul-claro)
+    );
+
+    color: white;
+    padding: 16px;
+    text-align: left;
+}
+
+.tabla-grupos td {
+    padding: 16px;
+    border-bottom: 1px solid var(--gris-borde);
+}
+
+.tabla-grupos tr:hover {
+    background-color: #f8fbff;
+}
+
+.nombre-grupo {
+    font-weight: bold;
+    color: var(--azul-menu-oscuro);
+}
+
+.acciones {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-accion {
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.ver {
+    background-color: #eef6ff;
+    color: var(--azul-oscuro);
+}
+
+.eliminar {
+    background-color: #fff0f2;
+    color: var(--rojo);
+}

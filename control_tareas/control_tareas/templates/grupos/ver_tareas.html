@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Tareas del grupo{% endblock %}
+
+{% block encabezado %}Tareas del grupo{% endblock %}
+{% block descripcion %}Consulta las tareas que están asociadas al grupo seleccionado.{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/grupos/ver_tareas.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="encabezado-listado">
+    <div>
+        <h2 class="titulo-pagina">Tareas asociadas</h2>
+        <p class="subtitulo-pagina">
+            Aquí se muestran las tareas que forman parte del grupo seleccionado.
+        </p>
+    </div>
+
+    <a href="{{ url_for('grupos.listar_grupos') }}" class="btn btn-secundario">
+        Volver
+    </a>
+</div>
+
+<div class="tabla-contenedor">
+    <table class="tabla-tareas-grupo">
+        <thead>
+            <tr>
+                <th>Detalle</th>
+                <th>Prioridad</th>
+                <th>Responsable</th>
+                <th>Estado</th>
+                <th>Fecha límite</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for tarea in tareas %}
+            <tr>
+                <td class="detalle-tarea {% if tarea.estado == 'Finalizada' %}tarea-finalizada{% endif %}">
+                    {{ tarea.detalle }}
+                </td>
+
+                <td>
+                    <span class="prioridad prioridad-{{ tarea.prioridad|lower }}">
+                        {{ tarea.prioridad }}
+                    </span>
+                </td>
+
+                <td>
+                    {% if tarea.responsable %}
+                        {{ tarea.responsable }}
+                    {% else %}
+                        <span class="texto-suave">Sin responsable asignado</span>
+                    {% endif %}
+                </td>
+
+                <td>
+                    {% if tarea.estado == 'Pendiente' %}
+                        <span class="estado estado-pendiente">Pendiente</span>
+                    {% elif tarea.estado == 'En progreso' %}
+                        <span class="estado estado-progreso">En progreso</span>
+                    {% elif tarea.estado == 'Bloqueada' %}
+                        <span class="estado estado-bloqueada">Bloqueada</span>
+                    {% else %}
+                        <span class="estado estado-finalizada">Finalizada</span>
+                    {% endif %}
+                </td>
+
+                <td>
+                    {% if tarea.fecha_limite %}
+                        {{ tarea.fecha_limite }}
+                    {% else %}
+                        <span class="texto-suave">Sin fecha límite</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

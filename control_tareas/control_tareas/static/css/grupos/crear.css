@@ -1,0 +1,108 @@
+.form-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--sombra);
+}
+
+.form-header {
+    margin-bottom: 25px;
+}
+
+.formulario-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--azul-menu-oscuro);
+}
+
+.campo input {
+    padding: 13px 14px;
+    border: 1px solid var(--gris-borde);
+    border-radius: 12px;
+    font-size: 15px;
+    background-color: #fbfdff;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 0 3px rgba(132,182,244,.25);
+}
+
+.lista-tareas {
+    background: linear-gradient(
+        135deg,
+        var(--rosado-suave),
+        #ffffff
+    );
+
+    border-radius: 18px;
+    padding: 22px;
+    border: 1px solid var(--gris-borde);
+}
+
+.lista-header {
+    margin-bottom: 20px;
+}
+
+.lista-header h3 {
+    margin: 0;
+    color: var(--azul-menu-oscuro);
+}
+
+.lista-header p {
+    color: var(--gris-suave);
+    margin-top: 8px;
+}
+
+.item-tarea {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px;
+    margin-bottom: 10px;
+
+    background-color: white;
+    border-radius: 12px;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.item-tarea:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra);
+}
+
+.item-tarea input {
+    width: 18px;
+    height: 18px;
+}
+
+.item-tarea span {
+    color: var(--gris-texto);
+}
+
+.mensaje-vacio {
+    background-color: white;
+    padding: 18px;
+    border-radius: 12px;
+    color: var(--gris-suave);
+}
+
+.botones-formulario {
+    display: flex;
+    gap: 12px;
+}

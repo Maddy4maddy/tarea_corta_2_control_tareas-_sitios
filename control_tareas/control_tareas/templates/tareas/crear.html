@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Crear tarea{% endblock %}
+
+{% block encabezado %}Crear tarea{% endblock %}
+{% block descripcion %}Registra una nueva tarea con prioridad, responsable y grupo opcional.{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/tareas/crear.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="form-card">
+    <div class="form-header">
+        <h2 class="titulo-pagina">Nueva tarea</h2>
+        <p class="subtitulo-pagina">
+            Al crear una tarea, su estado inicial será Pendiente.
+        </p>
+    </div>
+
+    <form action="{{ url_for('tareas.crear_tarea') }}" method="POST" class="formulario-tarea">
+
+        <div class="campo campo-completo">
+            <label for="detalle">Detalle de la tarea</label>
+            <textarea id="detalle" name="detalle" required placeholder="Escriba el detalle de la tarea"></textarea>
+        </div>
+
+        <div class="fila-formulario">
+            <div class="campo">
+                <label for="prioridad">Prioridad</label>
+                <select id="prioridad" name="prioridad" required>
+                    <option value="Baja">Baja</option>
+                    <option value="Media">Media</option>
+                    <option value="Alta">Alta</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="fecha_limite">Fecha límite</label>
+                <input type="date" id="fecha_limite" name="fecha_limite">
+            </div>
+        </div>
+
+        <div class="fila-formulario">
+            <div class="campo">
+                <label for="id_responsable">Responsable</label>
+                <select id="id_responsable" name="id_responsable">
+                    <option value="">Sin responsable asignado</option>
+
+                    {% for responsable in responsables %}
+                    <option value="{{ responsable.id_responsable }}">
+                        {{ responsable.nombre }} {{ responsable.apellidos }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="id_grupo">Grupo</label>
+                <select id="id_grupo" name="id_grupo">
+                    <option value="">Sin grupo</option>
+
+                    {% for grupo in grupos %}
+                    <option value="{{ grupo.id_grupo }}">
+                        {{ grupo.nombre }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="nota-formulario">
+            Estado inicial: <strong>Pendiente</strong>
+        </div>
+
+        <div class="botones-formulario">
+            <button type="submit" class="btn btn-principal">Guardar tarea</button>
+            <a href="{{ url_for('tareas.listar_tareas') }}" class="btn btn-secundario">Cancelar</a>
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

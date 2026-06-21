@@ -1,0 +1,98 @@
+.encabezado-listado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.tabla-contenedor {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+.tabla-tareas-grupo {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-tareas-grupo th {
+    background: linear-gradient(
+        135deg,
+        var(--rosado),
+        var(--azul-claro)
+    );
+
+    color: white;
+    padding: 16px;
+    text-align: left;
+}
+
+.tabla-tareas-grupo td {
+    padding: 16px;
+    border-bottom: 1px solid var(--gris-borde);
+}
+
+.tabla-tareas-grupo tr:hover {
+    background-color: #f8fbff;
+}
+
+.detalle-tarea {
+    font-weight: bold;
+    color: var(--azul-menu-oscuro);
+}
+
+.tarea-finalizada {
+    text-decoration: line-through;
+    color: #8a94a6;
+}
+
+.texto-suave {
+    color: var(--gris-suave);
+    font-style: italic;
+}
+
+.estado,
+.prioridad {
+    font-weight: bold;
+    padding: 7px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 13px;
+}
+
+.estado-pendiente {
+    background-color: var(--celeste-suave);
+    color: var(--azul-menu-oscuro);
+}
+
+.estado-progreso {
+    background-color: var(--azul-claro);
+    color: white;
+}
+
+.estado-bloqueada {
+    background-color: var(--rosado-suave);
+    color: #cc3d7a;
+}
+
+.estado-finalizada {
+    background-color: var(--azul-menu);
+    color: white;
+}
+
+.prioridad-baja {
+    background-color: var(--celeste-suave);
+    color: var(--azul-oscuro);
+}
+
+.prioridad-media {
+    background-color: var(--azul-claro);
+    color: white;
+}
+
+.prioridad-alta {
+    background-color: var(--rosado-suave);
+    color: #cc3d7a;
+}

@@ -1,0 +1,20 @@
+from flask import Flask, redirect, url_for
+
+from routes.tareas_routes import tareas_bp
+from routes.grupos_routes import grupos_bp
+
+app = Flask(__name__)
+
+app.secret_key = "clave_secreta_control_tareas"
+
+app.register_blueprint(tareas_bp)
+app.register_blueprint(grupos_bp)
+
+
+@app.route("/")
+def inicio():
+    return redirect(url_for("tareas.listar_tareas"))
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

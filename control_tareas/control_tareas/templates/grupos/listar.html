@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Listado de grupos{% endblock %}
+
+{% block encabezado %}Grupos de tareas{% endblock %}
+{% block descripcion %}Crea grupos y consulta las tareas asociadas a cada uno.{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/grupos/listar.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="encabezado-listado">
+    <div>
+        <h2 class="titulo-pagina">Grupos registrados</h2>
+        <p class="subtitulo-pagina">
+            Desde aquí puedes ver las tareas de cada grupo o eliminar un grupo.
+        </p>
+    </div>
+
+    <a href="{{ url_for('grupos.crear_grupo') }}" class="btn btn-principal">
+        + Nuevo grupo
+    </a>
+</div>
+
+<div class="tabla-contenedor">
+    <table class="tabla-grupos">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre del grupo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for grupo in grupos %}
+            <tr>
+                <td>{{ grupo.id_grupo }}</td>
+
+                <td class="nombre-grupo">
+                    {{ grupo.nombre }}
+                </td>
+
+                <td>
+                    <div class="acciones">
+                        <a href="{{ url_for('grupos.ver_tareas_grupo', id_grupo=grupo.id_grupo) }}"
+                           class="btn-accion ver">
+                            Ver tareas
+                        </a>
+
+                        <a href="{{ url_for('grupos.eliminar_grupo', id_grupo=grupo.id_grupo) }}"
+                           class="btn-accion eliminar">
+                            Eliminar
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
