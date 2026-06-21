@@ -13,7 +13,7 @@ def listar_grupos():
 
 @grupos_bp.route("/crear", methods=["GET", "POST"])
 def crear_grupo():
-    tareas_pendientes = GrupoModel.obtener_tareas_pendientes()
+    tareas_pendientes = GrupoModel.obtener_tareas_pendientes_sin_grupo()
 
     if request.method == "POST":
         nombre = request.form["nombre"]

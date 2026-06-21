@@ -15,7 +15,7 @@
     <div class="form-header">
         <h2 class="titulo-pagina">Nuevo grupo</h2>
         <p class="subtitulo-pagina">
-            Solo se solicita el nombre del grupo. También puedes marcar tareas pendientes para asociarlas.
+            Solo se solicita el nombre del grupo. También puedes marcar tareas pendientes sin grupo para asociarlas.
         </p>
     </div>
 
@@ -35,8 +35,8 @@
 
         <div class="lista-tareas">
             <div class="lista-header">
-                <h3>Tareas pendientes para asociar</h3>
-                <p>Selecciona las tareas que deseas incluir en este grupo.</p>
+                <h3>Tareas pendientes sin grupo</h3>
+                <p>Selecciona las tareas que deseas asociar al nuevo grupo.</p>
             </div>
 
             {% if tareas_pendientes %}
@@ -48,7 +48,13 @@
                            value="{{ tarea.id_tarea }}">
 
                     <span>
-                        {{ tarea.detalle }}
+                        <strong>{{ tarea.detalle }}</strong>
+
+                        {% if tarea.responsable %}
+                            - Responsable: {{ tarea.responsable }}
+                        {% else %}
+                            - Sin responsable asignado
+                        {% endif %}
                     </span>
                 </label>
                 {% endfor %}
@@ -56,7 +62,7 @@
             {% else %}
 
                 <div class="mensaje-vacio">
-                    No existen tareas pendientes para asociar.
+                    No existen tareas pendientes sin grupo para asociar.
                 </div>
 
             {% endif %}

@@ -35,7 +35,6 @@ class GrupoModel:
         )
 
         conexion.commit()
-
         id_grupo_creado = cursor.lastrowid
 
         cursor.close()
@@ -69,11 +68,12 @@ class GrupoModel:
         sql = """
         SELECT
             t.*,
-            CONCAT(r.nombre,' ',r.apellidos) AS responsable
+            CONCAT(r.nombre, ' ', r.apellidos) AS responsable
         FROM tareas t
         LEFT JOIN responsables r
             ON t.id_responsable = r.id_responsable
-        WHERE t.id_grupo=%s
+        WHERE t.id_grupo = %s
+        ORDER BY t.id_tarea DESC
         """
 
         cursor.execute(sql, (id_grupo,))
@@ -85,14 +85,20 @@ class GrupoModel:
         return tareas
 
     @staticmethod
-    def obtener_tareas_pendientes():
+    def obtener_tareas_pendientes_sin_grupo():
         conexion = obtener_conexion()
         cursor = conexion.cursor(dictionary=True)
 
         cursor.execute("""
-            SELECT *
-            FROM tareas
-            WHERE estado='Pendiente'
+            SELECT
+                t.*,
+                CONCAT(r.nombre, ' ', r.apellidos) AS responsable
+            FROM tareas t
+            LEFT JOIN responsables r
+                ON t.id_responsable = r.id_responsable
+            WHERE t.estado = 'Pendiente'
+              AND t.id_grupo IS NULL
+            ORDER BY t.id_tarea DESC
         """)
 
         tareas = cursor.fetchall()

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.46, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.43, for Win64 (x86_64)
 --
--- Host: localhost    Database: control_tareas
+-- Host: 127.0.0.1    Database: control_tareas
 -- ------------------------------------------------------
--- Server version	8.0.46
+-- Server version	8.0.43
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -51,9 +51,8 @@ CREATE TABLE `responsables` (
   `identificacion` varchar(50) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellidos` varchar(150) NOT NULL,
-  `fecha_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_responsable`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +61,7 @@ CREATE TABLE `responsables` (
 
 LOCK TABLES `responsables` WRITE;
 /*!40000 ALTER TABLE `responsables` DISABLE KEYS */;
-INSERT INTO `responsables` VALUES (1,'208400050','Angie','Romero Ceciliano','2026-06-21 07:07:15'),(2,'202220222','Adrián','Solano Vargas','2026-06-21 07:07:15'),(3,'303330333','Mauricio','Madriz Ceciliano','2026-06-21 07:07:15'),(4,'119520920','Madeline','Cordero Ruiz','2026-06-21 07:36:22');
+INSERT INTO `responsables` VALUES (1,'208400050','Angie','Romero Ceciliano'),(2,'202220222','Adrián','Solano Vargas'),(3,'303330333','Mauricio','Madriz Ceciliano');
 /*!40000 ALTER TABLE `responsables` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +95,7 @@ CREATE TABLE `tareas` (
 
 LOCK TABLES `tareas` WRITE;
 /*!40000 ALTER TABLE `tareas` DISABLE KEYS */;
-INSERT INTO `tareas` VALUES (1,'Realizar documentación del proyecto','Alta','2026-06-22','Pendiente',NULL,1,1),(2,'Revisar diseño de base de datos','Media','2026-06-21','En progreso',NULL,2,1),(3,'Comprar materiales pendientes','Baja',NULL,'Pendiente',NULL,NULL,3),(4,'Corregir errores del sistema','Alta','2026-06-23','Bloqueada',NULL,3,2),(5,'Análisis de Requerimientos','Alta','2026-07-12','Pendiente',NULL,1,1);
+INSERT INTO `tareas` VALUES (1,'Realizar documentación del proyecto','Alta','2026-06-22','Pendiente',NULL,1,3),(2,'Revisar diseño de base de datos','Media','2026-06-21','Finalizada','2026-06-18 16:24:04',2,1),(3,'Comprar materiales pendientes','Baja',NULL,'Pendiente',NULL,NULL,3),(4,'Corregir errores del sistema','Alta','2026-06-23','Bloqueada',NULL,3,2),(5,'Análisis de Requerimientos','Alta','2026-07-12','En progreso',NULL,1,1);
 /*!40000 ALTER TABLE `tareas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -109,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-21  1:41:46
+-- Dump completed on 2026-06-21 15:18:40
