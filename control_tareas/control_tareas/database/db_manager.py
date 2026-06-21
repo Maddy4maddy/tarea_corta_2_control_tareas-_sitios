@@ -11,7 +11,7 @@ class DatabaseManager:
                 self.connection = mysql.connector.connect(
                     host="localhost",
                     user="root",
-                    password="12328",
+                    password="1234",
                     database="control_tareas"
                 )
             return self.connection
