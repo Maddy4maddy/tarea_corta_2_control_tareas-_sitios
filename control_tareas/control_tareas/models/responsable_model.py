@@ -29,7 +29,6 @@ class ResponsableModel:
         return self.db.execute_update(query, (nombre, apellidos, identificacion, responsable_id))
     
     def eliminar(self, responsable_id):
-        # Primero actualizar tareas para quitar la referencia
         query_tareas = """
             UPDATE tareas 
             SET id_responsable = NULL 
@@ -37,7 +36,6 @@ class ResponsableModel:
         """
         self.db.execute_update(query_tareas, (responsable_id,))
         
-        # Luego eliminar el responsable
         query = "DELETE FROM responsables WHERE id_responsable = %s"
         return self.db.execute_delete(query, (responsable_id,))
     
