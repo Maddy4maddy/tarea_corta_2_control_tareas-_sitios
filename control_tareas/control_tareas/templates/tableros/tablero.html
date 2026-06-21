@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}Tablero Kanban{% endblock %}
+
+{% block encabezado %}Tablero de Tareas{% endblock %}
+{% block descripcion %}Vista tipo Kanban por estado de tareas{% endblock %}
+
+{% block content %}
+
+<!-- ================= FILTROS ================= -->
+<form method="GET" action="{{ url_for('tablero.tablero') }}" class="form-estado">
+
+    <select name="estado">
+        <option value="">Todos los estados</option>
+        <option value="Pendiente">Pendiente</option>
+        <option value="En progreso">En progreso</option>
+        <option value="Finalizada">Finalizada</option>
+    </select>
+
+    <select name="prioridad">
+        <option value="">Todas las prioridades</option>
+        <option value="Baja">Baja</option>
+        <option value="Media">Media</option>
+        <option value="Alta">Alta</option>
+    </select>
+
+    <!-- 🔥 NUEVO FILTRO FECHA -->
+    <input type="date" name="fecha" class="input-fecha">
+
+    <button type="submit" class="btn btn-cambiar">Filtrar</button>
+
+    <a href="{{ url_for('tablero.tablero') }}" class="btn btn-secundario">
+        Limpiar
+    </a>
+
+</form>
+<!-- ================= RESUMEN ================= -->
+<div class="tarjetas-resumen">
+
+    <div class="tarjeta-resumen">
+        <span>Pendientes</span>
+        <strong>{{ pendientes|length }}</strong>
+    </div>
+
+    <div class="tarjeta-resumen">
+        <span>En Progreso</span>
+        <strong>{{ progreso|length }}</strong>
+    </div>
+
+    <div class="tarjeta-resumen tarjeta-oscura">
+        <span>Finalizadas</span>
+        <strong>{{ finalizadas|length }}</strong>
+    </div>
+
+</div>
+
+<!-- ================= KANBAN ================= -->
+<div class="kanban">
+
+    <!-- PENDIENTES -->
+    <div class="kanban-col">
+        <h3 class="titulo-pagina">Pendiente</h3>
+
+        {% for tarea in pendientes %}
+        <div class="kanban-card">
+            <strong>{{ tarea.detalle }}</strong><br>
+
+            <span class="texto-suave">{{ tarea.responsable }}</span><br>
+            <span class="texto-suave">{{ tarea.grupo }}</span><br>
+
+            <span class="prioridad prioridad-{{ tarea.prioridad|lower }}">
+                {{ tarea.prioridad }}
+            </span>
+
+            <br><br>
+
+            <a href="{{ url_for('tablero.cambiar_estado',
+                id_tarea=tarea.id_tarea,
+                estado='En progreso') }}"
+               class="btn btn-cambiar">
+                Mover
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- EN PROGRESO -->
+    <div class="kanban-col">
+        <h3 class="titulo-pagina">En Progreso</h3>
+
+        {% for tarea in progreso %}
+        <div class="kanban-card">
+            <strong>{{ tarea.detalle }}</strong><br>
+
+            <span class="texto-suave">{{ tarea.responsable }}</span><br>
+            <span class="texto-suave">{{ tarea.grupo }}</span><br>
+
+            <span class="prioridad prioridad-{{ tarea.prioridad|lower }}">
+                {{ tarea.prioridad }}
+            </span>
+
+            <br><br>
+
+            <a href="{{ url_for('tablero.cambiar_estado',
+                id_tarea=tarea.id_tarea,
+                estado='Finalizada') }}"
+               class="btn btn-finalizar">
+                Finalizar
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- FINALIZADAS -->
+    <div class="kanban-col">
+        <h3 class="titulo-pagina">Finalizadas</h3>
+
+        {% for tarea in finalizadas %}
+        <div class="kanban-card" style="opacity:0.85;">
+            <strong>{{ tarea.detalle }}</strong><br>
+
+            <span class="texto-suave">{{ tarea.responsable }}</span><br>
+            <span class="texto-suave">{{ tarea.grupo }}</span><br>
+
+            <span class="prioridad prioridad-{{ tarea.prioridad|lower }}">
+                {{ tarea.prioridad }}
+            </span>
+
+            <br><br>
+
+            <a href="{{ url_for('tablero.cambiar_estado',
+                id_tarea=tarea.id_tarea,
+                estado='Pendiente') }}"
+               class="btn btn-reactivar">
+                Reactivar
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

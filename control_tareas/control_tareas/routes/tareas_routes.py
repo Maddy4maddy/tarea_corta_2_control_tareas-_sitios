@@ -10,6 +10,18 @@ def listar_tareas():
     return render_template("tareas/listar.html", tareas=tareas)
 
 
+
+@tareas_bp.route("/tablero")
+def tablero():
+
+    tareas = TareaModel.obtener_todas()
+
+    return render_template(
+        "tareas/tablero.html",
+        tareas=tareas
+    )
+
+
 @tareas_bp.route("/crear", methods=["GET", "POST"])
 def crear_tarea():
     responsables = TareaModel.obtener_responsables()

@@ -712,6 +712,8 @@ body {
     }
 }
 
+/* ===== PARA NAZARETH ===== */
+
 @media (max-width: 480px) {
     .logo h1 {
         font-size: 18px;
@@ -753,4 +755,61 @@ body {
         width: 100%;
         text-align: center;
     }
+}
+.kanban-tablero {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.kanban-columna {
+    flex: 1;
+    background: white;
+    padding: 15px;
+    border-radius: 18px;
+    box-shadow: var(--sombra);
+}
+
+.tarjeta-tarea {
+    background: linear-gradient(135deg, white, var(--celeste-suave));
+    border: 1px solid var(--gris-borde);
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 12px;
+    transition: 0.2s;
+}
+
+.tarjeta-tarea:hover {
+    transform: translateY(-3px);
+}
+
+.kanban {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.kanban-col {
+    flex: 1;
+    background: white;
+    border-radius: 18px;
+    box-shadow: var(--sombra);
+    padding: 15px;
+    min-width: 280px;
+}
+
+.kanban-card {
+    background: linear-gradient(135deg, white, var(--celeste-suave));
+    border: 1px solid var(--gris-borde);
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 12px;
+    word-wrap: break-word;
+}
+.input-fecha {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--gris-borde);
+    background: white;
+    color: var(--gris-texto);
 }
