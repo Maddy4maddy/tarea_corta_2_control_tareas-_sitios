@@ -1,0 +1,84 @@
+.tarjetas-resumen {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    background: white;
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: var(--sombra);
+    margin-bottom: 26px;
+}
+
+.tarjeta-resumen {
+    background: linear-gradient(135deg, white, var(--celeste-suave));
+    border: 1px solid var(--gris-borde);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+}
+
+.tarjeta-resumen span {
+    display: block;
+    color: var(--gris-suave);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.tarjeta-resumen strong {
+    font-size: 30px;
+    color: var(--azul-menu-oscuro);
+}
+
+.tarjeta-rosada {
+    background: linear-gradient(135deg, white, var(--rosado-suave));
+}
+
+.tarjeta-oscura {
+    background: linear-gradient(135deg, var(--azul-menu), var(--azul-oscuro));
+}
+
+.tarjeta-oscura span,
+.tarjeta-oscura strong {
+    color: white;
+}
+
+.btn-accion {
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    border: 1px solid var(--gris-borde);
+}
+
+.editar {
+    color: var(--azul-oscuro);
+    background-color: #eef6ff;
+}
+
+.eliminar {
+    color: var(--rojo);
+    background-color: #fff0f2;
+}
+
+.finalizar {
+    color: var(--verde);
+    background-color: #edfdf4;
+}
+
+.reactivar {
+    color: var(--azul-menu);
+    background-color: var(--rosado-suave);
+}
+
+@media (max-width: 1024px) {
+    .tarjetas-resumen {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tarjetas-resumen {
+        grid-template-columns: 1fr;
+    }
+}
