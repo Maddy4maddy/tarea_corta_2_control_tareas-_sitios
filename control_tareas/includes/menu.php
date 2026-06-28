@@ -15,6 +15,10 @@
            class="<?php echo $pagina_activa === 'grupos' ? 'activo' : ''; ?>">
             Grupos
         </a>
+        <a href="<?php echo $base_url; ?>/tablero/tablero.php"
+            class="<?php echo $pagina_activa === 'tablero' ? 'activo' : ''; ?>">
+            Tablero
+        </a>
     </nav>
 </aside>
 

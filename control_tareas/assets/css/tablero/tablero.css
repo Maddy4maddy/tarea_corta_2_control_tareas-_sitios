@@ -1,0 +1,205 @@
+.encabezado-tablero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.filtros{
+    background: var(--blanco);
+    border-radius:18px;
+    padding:20px;
+    box-shadow: var(--sombra);
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.filtros select,
+.filtros input{
+    padding:12px 14px;
+    border:1px solid var(--gris-borde);
+    border-radius:12px;
+    background:#fbfdff;
+    color:var(--gris-texto);
+    min-width:180px;
+    font-size:14px;
+}
+
+.filtros button{
+    padding:12px 20px;
+}
+
+.tablero{
+
+    display:flex;
+    gap:22px;
+    align-items:flex-start;
+    overflow-x:auto;
+    padding-bottom:10px;
+
+}
+
+.columna{
+
+    flex:1;
+    min-width:290px;
+
+    background:var(--blanco);
+
+    border-radius:20px;
+
+    box-shadow:var(--sombra);
+
+    overflow:hidden;
+
+}
+
+.columna h3{
+
+    background:linear-gradient(135deg,var(--azul-claro),var(--rosado));
+
+    color:white;
+
+    text-align:center;
+
+    padding:18px;
+
+    font-size:18px;
+
+}
+
+.lista-tareas{
+
+    padding:18px;
+
+    min-height:550px;
+
+}
+
+.tarjeta{
+
+    background:linear-gradient(135deg,#ffffff,#f9fbff);
+
+    border:1px solid var(--gris-borde);
+
+    border-radius:16px;
+
+    padding:16px;
+
+    margin-bottom:18px;
+
+    transition:.25s;
+
+}
+
+.tarjeta:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 20px rgba(23,49,92,.12);
+
+}
+
+.tarjeta h4{
+
+    color:var(--azul-menu-oscuro);
+
+    margin-bottom:12px;
+
+    font-size:16px;
+
+}
+
+.tarjeta p{
+
+    margin-bottom:8px;
+
+    color:var(--gris-texto);
+
+    font-size:14px;
+
+}
+
+.tarjeta strong{
+
+    color:var(--azul-menu);
+
+}
+
+.tarjeta form{
+
+    margin-top:15px;
+
+}
+
+.tarjeta select{
+
+    width:100%;
+
+    padding:11px;
+
+    border-radius:12px;
+
+    border:1px solid var(--gris-borde);
+
+    background:#fff;
+
+    color:var(--gris-texto);
+
+}
+
+.sin-tareas{
+
+    text-align:center;
+
+    color:var(--gris-suave);
+
+    font-style:italic;
+
+    padding:35px 10px;
+
+}
+
+.estado{
+
+    margin-top:8px;
+
+}
+
+.prioridad{
+
+    margin-top:6px;
+
+}
+
+@media(max-width:1200px){
+
+    .tablero{
+
+        flex-wrap:nowrap;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .filtros{
+
+        flex-direction:column;
+
+    }
+
+    .filtros select,
+    .filtros input,
+    .filtros button{
+
+        width:100%;
+
+    }
+
+}
