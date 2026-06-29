@@ -7,7 +7,7 @@ $host = "127.0.0.1";
 $puerto = "3306";
 $dbname = "control_tareas";
 $user = "root";
-$password = "1234";
+$password = "12328";
 
 try {
     $conexion = new PDO(
